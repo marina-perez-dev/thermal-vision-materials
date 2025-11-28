@@ -1,0 +1,7 @@
+import sys
+from pathlib import Path
+
+# Ensure the project's `src` directory is on sys.path for tests
+ROOT = Path(__file__).resolve().parent.parent
+SRC = ROOT / "src"
+sys.path.insert(0, str(SRC))
