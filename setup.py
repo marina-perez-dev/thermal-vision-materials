@@ -9,14 +9,14 @@ def read_requirements():
     if req.exists():
         return [
             r.strip()
-            for r in req.read_text(encoding="utf-8").splitlines()
+            for r in req.read_text(encoding="utf-8-sig", errors="replace").splitlines()
             if r.strip() and not r.strip().startswith("#")
         ]
     return []
 
 
 long_description = (
-    (root / "README.md").read_text(encoding="utf-8")
+    (root / "README.md").read_text(encoding="utf-8-sig", errors="replace")
     if (root / "README.md").exists()
     else ""
 )
