@@ -8,21 +8,21 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
 
     - name: Set up Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v4
       with:
         python-version: '3.8'
 
     - name: Install dependencies
       run: |
-        python -m pip install --upgrade pip
-        pip install -e .
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        python -m pip install --upgrade pip setuptools wheel
+        if [ -f requirements.txt ]; then python -m pip install -r requirements.txt; fi
+        python -m pip install -e .
+        python -m pip check
 
-    # - name: Run tests
-    #   run: |
-    #     pytest tests/*.py
-
-# ![CI Status](https://github.com/yourusername/yourrepository/actions/workflows/ci.yml/badge.svg)
+    - name: Run tests
+      run: |
+        python -m pytest -q
+        
