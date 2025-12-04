@@ -1,0 +1,21 @@
+schema: '2.0'
+stages:
+  ingest:
+    cmd: python scripts/ingest.py data_src data/raw/data_raw.csv
+    outs:
+    - path: data/raw/data_raw.csv
+      hash: md5
+      md5: afe3e349711cbff6ccd7c0aa989f8c64
+      size: 33
+  preprocess:
+    cmd: python scripts/preprocess.py data/raw/data_raw.csv data/processed/data_processed.csv
+    deps:
+    - path: data/raw/data_raw.csv
+      hash: md5
+      md5: afe3e349711cbff6ccd7c0aa989f8c64
+      size: 33
+    outs:
+    - path: data/processed/data_processed.csv
+      hash: md5
+      md5: bb9f619e8baea8480d50071315eae2fc
+      size: 35

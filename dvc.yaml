@@ -1,0 +1,12 @@
+stages:
+  ingest:
+    cmd: python scripts/ingest.py data_src data/raw/data_raw.csv
+    deps: []
+    outs:
+      - data/raw/data_raw.csv
+  preprocess:
+    cmd: python scripts/preprocess.py data/raw/data_raw.csv data/processed/data_processed.csv
+    deps:
+      - data/raw/data_raw.csv
+    outs:
+      - data/processed/data_processed.csv
