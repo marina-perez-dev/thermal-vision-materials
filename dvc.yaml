@@ -1,4 +1,14 @@
 stages:
+  # Pipeline pour le dataset Roboflow Thermal Waste Detection
+  ingest_roboflow:
+    cmd: python src/thermal_sensors/scripts/ingest_roboflow_dataset.py --output-dir data/raw/roboflow --target-dir data/raw
+    deps:
+      - data/raw/roboflow
+      - src/thermal_sensors/scripts/ingest_roboflow_dataset.py
+    outs:
+      - data/raw/roboflow_metadata.csv
+      - data/raw/roboflow_statistics.json
+  # Pipeline générique (fallback)
   ingest:
     cmd: python scripts/ingest.py data_src data/raw/data_raw.csv
     deps: []

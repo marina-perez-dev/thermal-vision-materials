@@ -1,0 +1,47 @@
+{
+  "total_images": 707,
+  "splits": {
+    "train": {
+      "count": 495,
+      "percentage": 70.01
+    },
+    "valid": {
+      "count": 141,
+      "percentage": 19.94
+    },
+    "test": {
+      "count": 71,
+      "percentage": 10.04
+    }
+  },
+  "classes": {
+    "glass": {
+      "count": 155,
+      "percentage": 21.38
+    },
+    "organic": {
+      "count": 134,
+      "percentage": 18.48
+    },
+    "steel": {
+      "count": 111,
+      "percentage": 15.31
+    },
+    "polythene": {
+      "count": 105,
+      "percentage": 14.48
+    },
+    "plastic": {
+      "count": 102,
+      "percentage": 14.07
+    },
+    "paper": {
+      "count": 66,
+      "percentage": 9.1
+    },
+    "aluminium": {
+      "count": 52,
+      "percentage": 7.17
+    }
+  }
+}
