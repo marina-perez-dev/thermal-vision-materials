@@ -15,8 +15,14 @@ stages:
     outs:
       - data/raw/data_raw.csv
   preprocess:
-    cmd: python scripts/preprocess.py data/raw/data_raw.csv data/processed/data_processed.csv
+    cmd: python scripts/preprocess.py data/raw/roboflow_metadata.csv data/processed
     deps:
-      - data/raw/data_raw.csv
+      - data/raw/roboflow_metadata.csv
+      - data/raw/roboflow
+      - src/thermal_sensors/scripts/preprocess.py
     outs:
-      - data/processed/data_processed.csv
+      - data/processed/train
+      - data/processed/validation
+      - data/processed/test
+      - data/processed/processed_metadata.csv
+      - data/processed/preprocessing_stats.json

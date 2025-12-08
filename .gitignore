@@ -48,3 +48,7 @@ Thumbs.db
 
 # Project outputs / artifacts (kept out of git; DVC manages data/)
 outputs/
+
+# DVC-managed data files (tracked by DVC, not Git)
+data/raw/roboflow_metadata.csv
+data/raw/roboflow_statistics.json
