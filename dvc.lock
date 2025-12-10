@@ -8,7 +8,8 @@ stages:
       md5: afe3e349711cbff6ccd7c0aa989f8c64
       size: 33
   preprocess:
-    cmd: python scripts/preprocess.py data/raw/data_raw.csv data/processed/data_processed.csv
+    cmd: python scripts/preprocess.py data/raw/data_raw.csv 
+      data/processed/data_processed.csv
     deps:
     - path: data/raw/data_raw.csv
       hash: md5
@@ -19,3 +20,25 @@ stages:
       hash: md5
       md5: bb9f619e8baea8480d50071315eae2fc
       size: 35
+  ingest_roboflow:
+    cmd: python src/thermal_sensors/scripts/ingest_roboflow_dataset.py 
+      --output-dir data/raw/roboflow --target-dir data/raw
+    deps:
+    - path: data/raw/roboflow
+      hash: md5
+      md5: cf64c57306aedf4038b9edd85401308f.dir
+      size: 36700024
+      nfiles: 712
+    - path: src/thermal_sensors/scripts/ingest_roboflow_dataset.py
+      hash: md5
+      md5: bd3539986e450295fa5b981e5b058014
+      size: 16639
+    outs:
+    - path: data/raw/roboflow_metadata.csv
+      hash: md5
+      md5: f71aadaac3e14151520f1feddf743387
+      size: 105083
+    - path: data/raw/roboflow_statistics.json
+      hash: md5
+      md5: 32915e87b1b7d93bbd951b8a324d64be
+      size: 793

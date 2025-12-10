@@ -26,3 +26,14 @@ stages:
       - data/processed/test
       - data/processed/processed_metadata.csv
       - data/processed/preprocessing_stats.json
+  train:
+    cmd: python scripts/train.py --processed-data-dir data/processed --metadata data/processed/processed_metadata.csv --model-dir models/baseline
+    deps:
+      - data/processed/train
+      - data/processed/validation
+      - data/processed/processed_metadata.csv
+      - src/thermal_sensors/models/baseline_model.py
+      - src/thermal_sensors/data_generator.py
+      - src/thermal_sensors/scripts/train.py
+    outs:
+      - models/baseline
